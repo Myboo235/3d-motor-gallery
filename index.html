@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hayabusa — 3D Gallery</title>
+<meta name="description" content="Explore a 3D model of the Suzuki GSX1300R Hayabusa part by part.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,700;1,800;1,900&family=Be+Vietnam+Pro:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+</script>
+</head>
+<body>
+<div id="bgtext" aria-hidden="true"><span>HAYA</span><span>BUSA</span></div>
+<div class="kanji" aria-hidden="true">隼</div>
+<div class="grain" aria-hidden="true"></div>
+
+<canvas id="gl"></canvas>
+<div id="hotspots"></div>
+<div id="tip" class="tip"></div>
+
+<div id="app">
+  <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+  <div class="vtext" aria-hidden="true">鈴木 · GSX1300R · 隼 — 3D GALLERY</div>
+
+  <header id="top">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 48 32" aria-hidden="true"><path d="M2 30 18 2h9L11 30z"/><path d="M20 30 36 2h9L29 30z" opacity=".55"/></svg>
+      <div>
+        <h1>HAYABUSA</h1>
+        <p>隼 <b>·</b> GSX1300R <b>·</b> <span data-i18n="gallery">3D GALLERY</span></p>
+      </div>
+    </div>
+    <div class="hint" id="hint"><span class="dot"></span><span data-i18n="hint"></span></div>
+    <div class="top-right">
+      <div class="lang" id="lang" role="group" aria-label="Language">
+        <button data-lang="en">EN</button><button data-lang="vi">VI</button>
+      </div>
+      <div class="swatches" id="swatches">
+        <span class="lbl"><span data-i18n="color">COLOR</span><em id="variantName"></em></span>
+      </div>
+    </div>
+  </header>
+
+  <aside id="list" aria-label="Parts">
+    <button class="overview-btn" id="btnOverview"><span>00</span><b data-i18n="overview">Overview</b></button>
+    <div id="listBody"></div>
+  </aside>
+
+  <section id="info" aria-live="polite">
+    <div class="ghostnum" id="infoGhost">00</div>
+    <div class="info-head">
+      <span class="counter" id="infoCounter"></span>
+      <span class="nav">
+        <button id="prev" data-i18n-aria="prev">←</button>
+        <button id="next" data-i18n-aria="next">→</button>
+      </span>
+    </div>
+    <div class="info-body" id="infoBody">
+      <span class="chip" id="infoGroup">—</span>
+      <h2 id="infoName"></h2>
+      <p class="en" id="infoEn"></p>
+      <p class="desc" id="infoDesc"></p>
+      <dl class="specs" id="infoSpecs"></dl>
+    </div>
+    <div class="info-foot" data-i18n="foot"></div>
+  </section>
+
+  <footer id="dock">
+    <div class="grp views" role="group">
+      <button data-view="front"><span data-i18n="front"></span><small>前</small></button>
+      <button data-view="side"><span data-i18n="side"></span><small>横</small></button>
+      <button data-view="rear"><span data-i18n="rear"></span><small>後</small></button>
+      <button data-view="top"><span data-i18n="top"></span><small>上</small></button>
+    </div>
+    <div class="grp explode">
+      <label for="explode"><span data-i18n="explode"></span><small>分解</small></label>
+      <input type="range" id="explode" min="0" max="1" step="0.005" value="0">
+      <output id="explodeOut">0%</output>
+    </div>
+    <div class="grp toggles">
+      <button class="tg" id="tgRotate" data-i18n-title="tSpin">⟳ <span data-i18n="spin"></span></button>
+      <button class="tg on" id="tgIso" data-i18n-title="tIso">◐ <span data-i18n="isolate"></span></button>
+      <button class="tg" id="tgWire" data-i18n-title="tWire">⌗ <span data-i18n="wire"></span></button>
+      <button class="tg ride" id="tgRide" data-i18n-title="tRide">▶ <span data-i18n="ride"></span></button>
+      <button class="tg" id="btnShot" data-i18n-title="tShot">◉ <span data-i18n="shot"></span></button>
+    </div>
+  </footer>
+  <a class="credit" id="credit" href="https://sketchfab.com/3d-models/suzuki-hayabusa-121f40c2c0974fb08823f3bd93c578fe" target="_blank" rel="noopener" data-i18n="credit"></a>
+</div>
+
+<div id="loader">
+  <div class="gauge">
+    <svg viewBox="0 0 200 120"><path class="track" d="M20 100 A80 80 0 0 1 180 100"/><path class="fill" id="gaugeFill" d="M20 100 A80 80 0 0 1 180 100"/></svg>
+    <div class="gnum" id="gaugeNum">0</div>
+  </div>
+  <p><span data-i18n="loading"></span> <b>HAYABUSA</b></p>
+  <p class="jp">起動中 · 隼</p>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
