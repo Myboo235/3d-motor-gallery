@@ -4,6 +4,16 @@ An interactive 3D gallery of the **Suzuki GSX1300R Hayabusa**. Orbit the bike, c
 
 Built with plain HTML/CSS/JavaScript and [three.js](https://threejs.org). No build step, no npm install.
 
+## Screenshots
+
+![Overview in Pearl White — part list, info card and dock](images/overview-white.png)
+
+| Isolate a part (Engine, Metallic Black) | Exploded view (Candy Red) |
+| --- | --- |
+| ![Engine isolated](images/engine-isolated.png) | ![Exploded view](images/exploded-red.png) |
+
+![Racing Blue with test ride enabled](images/test-ride-blue.png)
+
 ## Quick start
 
 You need a static web server, because the page loads ES modules and a `.gltf` file (opening `index.html` by double-click will not work).
@@ -50,6 +60,7 @@ Then open <http://localhost:5173>.
 ## Project structure
 
 ```
+images/               README screenshots
 index.html            page markup (uses data-i18n attributes)
 styles.css            all styling
 src/
